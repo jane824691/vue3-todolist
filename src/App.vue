@@ -3,6 +3,17 @@
     <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
       <h1 class="text-2xl font-bold mb-6 text-center">Todo List</h1>
       <div class="flex mb-4">
+        <!-- @keyup.enter語法糖:
+        原始寫法<input @keyup="handleKeyup">
+
+        在 methods 裡判斷
+        methods: {
+          handleKeyup(event) {
+            if (event.key === 'Enter') {
+              do something
+            }
+          }
+        } Vue簡化成@keyup.enter -->
         <input 
           v-model="newTodo"
           @keyup.enter="addTodo"
@@ -22,6 +33,7 @@
           :key="index"
           class="flex items-center justify-between p-2 border-b"
         >
+      <!-- {{ todo }} 會等於 { "Text": "2222", "completed": false } -->
           <span :class="{ 'line-through text-gray-500': todo.completed }">{{ todo.text }}</span>
           <div>
             <button 
@@ -46,21 +58,25 @@
 <script setup>
 import { ref } from 'vue'
 
-const newTodo = ref('')
+const newTodo = ref('') // input 綁定的變數，初始為空字串
 const todos = ref([])
 
 const addTodo = () => {
   if (newTodo.value.trim() !== '') {
-    todos.value.push({ text: newTodo.value, completed: false })
+    //在陣列push增加一筆包含 text 和 completed 狀態的物件
+    todos.value.push({ text: newTodo.value, completed: false }) 
+    // 再清空 input
     newTodo.value = ''
   }
 }
 
 const toggleTodo = (index) => {
+  // 從 Undo 切換 Complete
   todos.value[index].completed = !todos.value[index].completed
 }
 
 const removeTodo = (index) => {
+  // 從陣列移除
   todos.value.splice(index, 1)
 }
 </script>
