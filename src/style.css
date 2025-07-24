@@ -1,3 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.btn-1 {
+    @apply px-4 py-2 bg-orange-400 text-white rounded-xl w-20;
+}
+
+.custom-bg-img {
+  position: relative;
+}
+.custom-bg-img::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url('https://cdn.cdnstep.com/jKFaotKYWAi7PMg1OHGk/cover-1.thumb256.png');
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    background-size: contain;
+    opacity: 0.2; /* 半透明 */
+    pointer-events: none;
+    z-index: 1;
+}
+.custom-bg-img > * {
+    position: relative;
+    z-index: 2;
+}
