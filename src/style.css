@@ -7,19 +7,15 @@
 }
 
 .custom-bg-img {
-  position: relative;
+    position: relative;
 }
 .custom-bg-img::before {
     content: "";
-    position: absolute;
-    inset: 0;
     background-image: url('https://cdn.cdnstep.com/jKFaotKYWAi7PMg1OHGk/cover-1.thumb256.png');
-    background-repeat: no-repeat;
-    background-position: right bottom;
-    background-size: contain;
     opacity: 0.2; /* 半透明 */
     pointer-events: none;
     z-index: 1;
+    @apply bg-no-repeat bg-center bg-contain absolute inset-0;
 }
 .custom-bg-img > * {
     position: relative;
