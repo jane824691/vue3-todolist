@@ -8,6 +8,7 @@
 
 .custom-bg-img {
     position: relative;
+    width: 30rem;
 }
 .custom-bg-img::before {
     content: "";
@@ -20,4 +21,10 @@
 .custom-bg-img > * {
     position: relative;
     z-index: 2;
+}
+
+@media (max-width: 639px) {
+    .custom-bg-img {
+        width: auto;
+    }
 }
